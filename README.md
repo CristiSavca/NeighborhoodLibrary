@@ -2,9 +2,11 @@
 library emulator in java terminal !
 
 Home Screen:
+
 <img width="181" alt="Screenshot 2023-04-24 095751" src="https://user-images.githubusercontent.com/58373811/234041866-f81d343f-7ba2-48b7-b4be-b0a493a63f72.png">
 
 Products Display Screen:
+
 <img width="313" alt="Screenshot 2023-04-24 095825" src="https://user-images.githubusercontent.com/58373811/234041976-4c9508cd-a88b-4601-8443-89843db124ad.png">
 
 Calculator Screen (Erroneous inputs):
