@@ -1,9 +1,8 @@
 package org.example;
 import java.util.Scanner;
 public class HomeMain {
-    // main menu
-    public static void main(String[] args) throws InterruptedException {
-        Scanner scanner = new Scanner(System.in);
+    public static void main(String[] args) { // main menu screen
+        Scanner scanner = new Scanner(System.in); // make a scanner
 
         System.out.println("Main Menu:");
         System.out.println("[1] Show Available Books");
@@ -23,16 +22,16 @@ public class HomeMain {
         }
     }
 
-    public static void available() throws InterruptedException {
-        Scanner scanner = new Scanner(System.in);
-        Book[] books = Inventory.Inventory; // import inventory of books
+    public static void available() {
+        Scanner scanner = new Scanner(System.in); // create scanner
+        Book[] books = Inventory.Inventory; // // import array of book objects (inventory) and name it "books"
 
         System.out.println("Available Books To Checkout:");
         // print out necessary info about books
         for (int i = 0; i < books.length; i++){
-            if (books[i].isCheckedOut() == false){
-                System.out.println(
-                        "[" + i + "] " +
+            if (!books[i].isCheckedOut()){ // if current book in loop has its isCheckedOut() property set to false,
+                System.out.println( // then print out its info
+                        "[" + i + "] " + //index for easier book selection/inventory access
                                 books[i].getTitle() + ", " + "ID: " +
                                 books[i].getId() + ", ISBN: " +
                                 books[i].getIsbn());
@@ -42,30 +41,30 @@ public class HomeMain {
                 "[X] " + "Exit To Main Menu"
         );
 
-        String input = scanner.nextLine();
-        String choice = input; // save the user input bc input will be changed soon
+        String input = scanner.nextLine(); // clear scanner buffer from previous use
+        String choice = input; // save the user book index input bc input will be changed soon
 
         if (input.equals("X")){
-            main(null);
+            main(null); // null as the parameter bc we don't have anything to pass in
         }
-        else{
+        else{ // else if user inputs book index (not "X"), then use their input to get the book we need
             System.out.println("Please provide your name to check out " + books[Integer.parseInt(choice)].getTitle());
             input = scanner.nextLine();
             books[Integer.parseInt(choice)].checkOut(input); // convert user input to integer to use as index in inventory
-            // then call checkout method with user's name as parameter
+            // then call checkout method with user's name as parameter: books[i].checkOut(name)
         }
 
         System.out.println(books[Integer.parseInt(choice)].getTitle() + " was successfully Checked Out!");
-        Thread.sleep(2000); // pause for 2 seconds for user to read 'success' message
-        available(); // run checked out screen again to check out more books until user exits
+
+        available(); // run available books screen again to check out more books until user exits
     }
 
-    public static void checkedOut() throws InterruptedException {
-        Scanner scanner = new Scanner(System.in);
-        Book[] books = Inventory.Inventory;
+    public static void checkedOut() {
+        Scanner scanner = new Scanner(System.in); // make new scanner
+        Book[] books = Inventory.Inventory; // import array of book objects (inventory) and name it "books"
 
         System.out.println("Your Checked-Out Books:");
-
+        // same loop as available books, but if .isCheckedOut() == true
         for (int i = 0; i < books.length; i++){
             if (books[i].isCheckedOut() == true){
                 System.out.println(
@@ -89,22 +88,20 @@ public class HomeMain {
         }
     }
 
-    public static void checkIn() throws InterruptedException {
+    public static void checkIn() {
         Scanner scanner = new Scanner(System.in);
         Book[] books = Inventory.Inventory;
 
         System.out.println("Enter ID of book you are checking in:");
-
         int input = scanner.nextInt();
+
         // if inputted ID matches the ID of any book in inventory, check it in
         for (Book book : books){
             if (input == book.getId()){
-                book.checkIn();
+                book.checkIn(); // call checkIn method from the "Book" class on the current book in the loop
                 System.out.println(book.getTitle() + " was successfully Checked In!");
-                Thread.sleep(2000);
             }
         }
-
-        main(null); // back to main menu
+        main(null); // go back to main menu after check-in is done
     }
 }
