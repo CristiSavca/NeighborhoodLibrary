@@ -16,7 +16,7 @@ Calculator Screen (Erroneous inputs):
 
 The code snippet below is interesting because it converts a user-inputted string into an integer directly
 inside the brackets of books[] to be used as an index, then accesses the .checkOut(name) method of said book
-on the same line, passing a new user-input "name" as a parameter.
+on the same line, passing a new user-inputted "name" as a parameter.
 
 ```
 String input = scanner.nextLine();
