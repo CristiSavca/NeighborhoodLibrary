@@ -24,7 +24,7 @@ public class HomeMain {
 
     public static void available() {
         Scanner scanner = new Scanner(System.in); // create scanner
-        Book[] books = Inventory.Inventory; // // import array of book objects (inventory) and name it "books"
+        Book[] books = Inventory.Inventory; // import array of book objects (inventory) and name it "books"
 
         System.out.println("Available Books To Checkout:");
         // print out necessary info about books
